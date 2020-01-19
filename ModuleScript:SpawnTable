@@ -1,0 +1,6 @@
+local scripts = {"WetPlayer","PeeInToilet","PeeInToilet"}
+scripts["WetPlayer"] = {"Water"}
+scripts["PeeInToilet"] = {"ToiletWater"}
+scripts["ToiletScript"] = {"ToiletWater"}
+
+return scripts
