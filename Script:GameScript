@@ -1,0 +1,6 @@
+local BladderEvent = game:GetService("ReplicatedStorage").BladderEvent
+
+while true do
+	wait(0.8)
+	BladderEvent:FireAllClients(0.025)
+end
