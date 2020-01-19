@@ -1,0 +1,24 @@
+local Folder = script.Parent
+
+local folderElements = Folder:GetChildren()
+local objects = game.Workspace:GetDescendants()
+local scripts = require(script.SpawnTable)
+
+	
+for i1, specificObjects in ipairs(objects) do
+		
+		for i2, specificScript in ipairs(folderElements) do
+			if specificScript.Name ~= "CloneService" and specificScript.ClassName == "Script" then
+				for i3, spawnSource in ipairs(scripts[specificScript.Name]) do		
+					if scripts[specificScript.Name][i3] == specificObjects.Name then
+						local clonedScript = specificScript:Clone()
+						clonedScript.Disabled = false
+						print(specificObjects)
+						clonedScript.Parent = specificObjects
+					end
+				end
+			
+		end
+		
+	end
+end
