@@ -1,0 +1,25 @@
+local BladderEvent = game:GetService("ReplicatedStorage").BladderEvent
+local water = script.Parent
+local PEELEVEL = 25
+local PEESCALAR = 25/100
+local timeTable = {0,0}
+local cooldown = false
+COOLDOWNTIME = 0.125
+local clearPee = false
+water.Touched:Connect(function(part)
+	
+	if not cooldown then
+		cooldown = true
+		local foundHumanoid = part.Parent:findFirstChild("Humanoid")
+		if foundHumanoid ~= nil then
+			local player = game.Players:GetPlayerFromCharacter(foundHumanoid.Parent)
+			if player then
+				print(player.Name)
+				BladderEvent:FireClient(player, PEESCALAR, clearPee)
+		end	
+	end
+	
+	wait(COOLDOWNTIME)
+	cooldown = false
+	end
+end)
