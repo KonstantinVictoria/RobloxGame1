@@ -1,0 +1,26 @@
+local water = script.Parent
+local flushSound = water.FlushSound
+local peeSound = water.Peeing
+local cooldown = false
+local COOLDOWNTIME = 4
+
+water.Touched:connect(function(obj) -- if someone sits on the seat
+		if not cooldown then
+		cooldown = true			
+		local human = obj.Parent:FindFirstChild("Humanoid")
+		if human then
+			local player = game.Players:GetPlayerFromCharacter(human.Parent)
+			if player then
+				print'player'
+				water.BrickColor = BrickColor.new("Cool yellow")
+			end
+		end			
+		peeSound:Play()						
+		wait(2)		
+		flushSound:Play()		
+		wait(COOLDOWNTIME)
+		water.BrickColor = BrickColor.new("Fog")
+		cooldown = false
+	end
+end)
+
